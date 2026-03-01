@@ -1,0 +1,19 @@
+# Ignorar carpetas de IDEs
+.idea/
+.vscode/
+*.iml
+
+# Ignorar archivos generados por el build
+/target/
+*/target/
+
+# Ignorar carpetas de librerías locales
+/lib/
+*/lib/
+
+# Ignorar archivos de dependencias y compilación en Maven
+*.class
+*.jar
+
+# Ignorar archivos de configuración locales
+*.log

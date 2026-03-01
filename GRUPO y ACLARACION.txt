@@ -1,0 +1,8 @@
+Integrantes:
+Dengl Berta Felipe
+Armua Santiago
+
+Aclaracion: 
+cuando se ejecuta, el programa tarda en iniciar
+PERO en inicia. El programa va a estar conectado
+a la base de datos de Aiven.
