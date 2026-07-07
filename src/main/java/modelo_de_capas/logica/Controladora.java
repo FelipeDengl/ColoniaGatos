@@ -242,8 +242,18 @@ public class Controladora {
      *   return lat >= xMin && lat <= xMax && lon >= yMin && lon <= yMax;
      */
     private boolean puntoDentroDeColonia(Colonia c, double lat, double lon) {
-        // TODO: reemplazar por la lógica real usando los atributos de Colonia
-        return true;
+        if (c == null
+                || c.getLatMin() == null
+                || c.getLatMax() == null
+                || c.getLonMin() == null
+                || c.getLonMax() == null) {
+            return false;
+        }
+
+        return lat >= c.getLatMin()
+                && lat <= c.getLatMax()
+                && lon >= c.getLonMin()
+                && lon <= c.getLonMax();
     }
 
     // ===================== COLONIAS =====================
