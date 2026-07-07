@@ -3,6 +3,7 @@ package modelo_de_capas.igu;
 import modelo_de_capas.logica.Controladora;
 import modelo_de_capas.logica.Gato;
 import modelo_de_capas.logica.HogarTransito;
+import modelo_de_capas.logica.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -138,18 +139,7 @@ public class VistaRegistrarTareaVoluntario extends JPanel {
 
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(120, 120));
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(120, 120, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else {
-                lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-            }
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 120, 120));
 
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));

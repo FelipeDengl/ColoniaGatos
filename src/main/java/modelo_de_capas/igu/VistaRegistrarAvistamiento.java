@@ -3,6 +3,7 @@ package modelo_de_capas.igu;
 import modelo_de_capas.logica.Colonia;
 import modelo_de_capas.logica.Controladora;
 import modelo_de_capas.logica.Gato;
+import modelo_de_capas.logica.ImageUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -333,18 +334,7 @@ public class VistaRegistrarAvistamiento extends JPanel {
 
             if (gato != null) {
                 lblTexto.setText(gato.getNombre() + " (" + gato.getColor() + ")");
-                try {
-                    String path = gato.getFotoPath();
-                    if (path != null && !path.isBlank()) {
-                        ImageIcon icon = new ImageIcon(path);
-                        Image img = icon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-                        lblFoto.setIcon(new ImageIcon(img));
-                    } else {
-                        lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-                    }
-                } catch (Exception e) {
-                    lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-                }
+                lblFoto.setIcon(ImageUtils.loadImageScaledIcon(gato.getFotoPath(), 60, 60));
             }
 
             setBackground(isSelected ? new Color(220, 220, 220) : Color.WHITE);

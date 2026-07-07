@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import modelo_de_capas.logica.Controladora;
 import modelo_de_capas.logica.Gato;
+import modelo_de_capas.logica.ImageUtils;
 
 public class ListaGatosDialog extends JDialog {
 
@@ -75,18 +76,7 @@ public class ListaGatosDialog extends JDialog {
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(150, 150));
 
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else {
-                lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-            }
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 150, 150));
 
         // Info basica
         JPanel info = new JPanel();

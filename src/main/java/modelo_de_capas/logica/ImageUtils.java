@@ -7,17 +7,57 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class ImageUtils {
 
     public static ImageIcon loadImageScaledIcon(String path, int w, int h) {
         try {
-            BufferedImage img = ImageIO.read(new File(path));
+            File imageFile = resolveImageFile(path);
+            if (imageFile == null) {
+                return loadResourceScaledIcon("/placeholder_gato.png", w, h);
+            }
+
+            BufferedImage img = ImageIO.read(imageFile);
+            if (img == null) {
+                return loadResourceScaledIcon("/placeholder_gato.png", w, h);
+            }
+
             Image scaled = img.getScaledInstance(w, h, Image.SCALE_SMOOTH);
             return new ImageIcon(scaled);
         } catch (IOException ex) {
-            return loadResourceScaledIcon("/no_image.png", w, h);
+            return loadResourceScaledIcon("/placeholder_gato.png", w, h);
         }
+    }
+
+    private static File resolveImageFile(String path) {
+        if (path == null || path.isBlank()) {
+            return null;
+        }
+
+        Path imagePath = Paths.get(path);
+        if (imagePath.isAbsolute() && Files.isRegularFile(imagePath)) {
+            return imagePath.toFile();
+        }
+
+        Path currentDir = Paths.get(System.getProperty("user.dir"));
+        Path candidate = currentDir.resolve(imagePath).normalize();
+        if (Files.isRegularFile(candidate)) {
+            return candidate.toFile();
+        }
+
+        Path cursor = currentDir;
+        for (int i = 0; i < 4 && cursor != null; i++) {
+            candidate = cursor.resolve(imagePath).normalize();
+            if (Files.isRegularFile(candidate)) {
+                return candidate.toFile();
+            }
+            cursor = cursor.getParent();
+        }
+
+        return null;
     }
 
     public static ImageIcon loadResourceScaledIcon(String resourcePath, int w, int h) {

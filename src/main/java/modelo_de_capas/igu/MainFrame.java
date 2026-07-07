@@ -11,6 +11,7 @@ import modelo_de_capas.logica.Diagnostico;
 import modelo_de_capas.logica.Estudio;
 import modelo_de_capas.logica.Familia;
 import modelo_de_capas.logica.Gato;
+import modelo_de_capas.logica.ImageUtils;
 import modelo_de_capas.logica.Usuario;
 import modelo_de_capas.logica.PuntoAvistamiento;
 import modelo_de_capas.logica.Voluntario;
@@ -183,17 +184,7 @@ public class MainFrame extends JFrame {
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(350, 350));
 
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(350, 350, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 350, 350));
 
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
@@ -273,17 +264,7 @@ public class MainFrame extends JFrame {
 
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(150, 150));
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 150, 150));
 
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
@@ -329,16 +310,7 @@ public class MainFrame extends JFrame {
         lblFoto.setPreferredSize(new Dimension(300, 300));
         lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
 
-        try {
-            String ruta = gato.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-                lblFoto.setIcon(new ImageIcon(scaled));
-            } else lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-        } catch (Exception e) {
-            lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblFoto.setIcon(ImageUtils.loadImageScaledIcon(gato.getFotoPath(), 300, 300));
 
         JPanel panelInfo = new JPanel();
         panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.Y_AXIS));
@@ -862,18 +834,7 @@ public class MainFrame extends JFrame {
 
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(130, 130));
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(130, 130, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else {
-                lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-            }
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 130, 130));
 
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
@@ -1135,19 +1096,7 @@ public class MainFrame extends JFrame {
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(150, 150));
         lblImg.setHorizontalAlignment(SwingConstants.CENTER);
-
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else {
-                lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-            }
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 150, 150));
 
         // Info
         JPanel info = new JPanel();
@@ -1276,19 +1225,7 @@ public class MainFrame extends JFrame {
 
         JLabel lblImg = new JLabel();
         lblImg.setPreferredSize(new Dimension(150, 150));
-        try {
-            String ruta = g.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-                lblImg.setIcon(new ImageIcon(scaled));
-            } else {
-                lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-            }
-
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(g.getFotoPath(), 150, 150));
 
         JPanel info = new JPanel();
         info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
@@ -1336,17 +1273,7 @@ public class MainFrame extends JFrame {
         JLabel lblFoto = new JLabel();
         lblFoto.setPreferredSize(new Dimension(300, 300));
         lblFoto.setHorizontalAlignment(SwingConstants.CENTER);
-
-        try {
-            String ruta = gato.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-                lblFoto.setIcon(new ImageIcon(scaled));
-            } else lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-        } catch (Exception e) {
-            lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblFoto.setIcon(ImageUtils.loadImageScaledIcon(gato.getFotoPath(), 300, 300));
 
         JPanel panelInfo = new JPanel();
         panelInfo.setLayout(new BoxLayout(panelInfo, BoxLayout.Y_AXIS));

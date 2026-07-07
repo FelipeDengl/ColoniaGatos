@@ -1,6 +1,7 @@
 package modelo_de_capas.igu;
 
 import modelo_de_capas.logica.Gato;
+import modelo_de_capas.logica.ImageUtils;
 import javax.swing.*;
 import java.awt.*;
 
@@ -28,14 +29,7 @@ public class GatoListRenderer extends JPanel implements ListCellRenderer<Gato> {
         // Texto
         lblNombre.setText(gato.getNombre());
 
-        // Imagen
-        try {
-            ImageIcon icon = new ImageIcon(gato.getFotoPath());
-            Image scaled = icon.getImage().getScaledInstance(60, 60, Image.SCALE_SMOOTH);
-            lblImg.setIcon(new ImageIcon(scaled));
-        } catch (Exception e) {
-            lblImg.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblImg.setIcon(ImageUtils.loadImageScaledIcon(gato.getFotoPath(), 60, 60));
 
         // Colores
         setBackground(isSelected ? Color.LIGHT_GRAY : Color.WHITE);

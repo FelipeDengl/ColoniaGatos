@@ -7,6 +7,7 @@ import javax.swing.table.DefaultTableModel;
 
 import modelo_de_capas.logica.Controladora;
 import modelo_de_capas.logica.Gato;
+import modelo_de_capas.logica.ImageUtils;
 import modelo_de_capas.logica.PuntoAvistamiento;
 
 public class PerfilGatoDialog extends JDialog {
@@ -114,18 +115,7 @@ public class PerfilGatoDialog extends JDialog {
 
         lblInfo.setText(sb.toString());
 
-        try {
-            String ruta = gato.getFotoPath();
-            if (ruta != null && !ruta.isEmpty()) {
-                ImageIcon original = new ImageIcon(ruta);
-                Image scaled = original.getImage().getScaledInstance(300, 300, Image.SCALE_SMOOTH);
-                lblFoto.setIcon(new ImageIcon(scaled));
-            } else {
-                lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-            }
-        } catch (Exception e) {
-            lblFoto.setIcon(new ImageIcon("placeholder_gato.png"));
-        }
+        lblFoto.setIcon(ImageUtils.loadImageScaledIcon(gato.getFotoPath(), 300, 300));
     }
 
     private void cargarAvistamientos() {

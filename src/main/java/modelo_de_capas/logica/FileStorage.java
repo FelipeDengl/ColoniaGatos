@@ -32,6 +32,6 @@ public class FileStorage {
         // copiar archivo
         Files.copy(sourceFile.toPath(), target, StandardCopyOption.REPLACE_EXISTING);
 
-        return target.toString(); // devolvemos la ruta completa (o relativa)
+        return target.toAbsolutePath().normalize().toString();
     }
 }
